@@ -1,0 +1,329 @@
+<_init>:
+sub    $0x8,%rsp
+mov    0x20dd8d(%rip),%rax        
+test   %rax,%rax
+je     402275 <_init+0x15>
+callq  402750 <_base4Init+0x10>
+add    $0x8,%rsp
+retq   
+
+<sin@plt>:
+jmpq   *0x20dd62(%rip)        
+pushq  $0x4
+jmpq   402280 <_init+0x20>
+
+<popen@plt>:
+jmpq   *0x20dd3a(%rip)
+pushq  $0x9
+jmpq   402280 <_init+0x20>
+
+<getchar@plt>:
+jmpq   *0x20dbea(%rip)       
+pushq  $0x33
+jmpq   402280 <_init+0x20>
+
+<strcmp@plt>:
+jmpq   *0x20dbe2(%rip)        
+pushq  $0x34
+jmpq   402280 <_init+0x20>
+
+<usleep@plt>:
+jmpq   *0x20dbda(%rip)        
+pushq  $0x35
+jmpq   402280 <_init+0x20>
+
+<pclose@plt>:
+jmpq   *0x20dbd2(%rip)        
+pushq  $0x36
+jmpq   402280 <_init+0x20>
+
+<fread@plt>:
+jmpq   *0x20dbc2(%rip)   
+pushq  $0x38
+jmpq   402280 <_init+0x20>
+
+<__libc_start_main@plt>:
+jmpq   *0x20db62(%rip)
+pushq  $0x44
+jmpq   402280 <_init+0x20>
+
+<fwrite@plt>:
+jmpq   *0x20db4a(%rip)
+pushq  $0x47
+jmpq   402280 <_init+0x20>
+
+<_start>:
+xor    %ebp,%ebp
+mov    %rdx,%r9
+pop    %rsi
+mov    %rsp,%rdx
+and    $0xfffffffffffffff0,%rsp
+push   %rax
+push   %rsp
+mov    $0x40c390,%r8
+mov    $0x40c320,%rcx
+mov    $0x407231,%rdi
+callq  4026d0 <__libc_start_main@plt>
+hlt    
+nopw   0x0(%rax,%rax,1)
+
+<sound>:
+push   %rbp
+mov    %rsp,%rbp
+push   %rbx
+sub    $0x98,%rsp
+mov    %fs:0x28,%rax
+00 00 
+mov    %rax,-0x18(%rbp)
+xor    %eax,%eax
+lea    -0x80(%rbp),%rax
+mov    %rax,%rdi
+callq  4026b0 <_ZNSv@plt>
+lea    -0x80(%rbp),%rdx
+lea    -0x60(%rbp),%rax
+mov    $0x40c470,%esi
+mov    %rax,%rdi
+callq  4025a0
+
+<genwave>:
+push   %rbp
+mov    %rsp,%rbp
+push   %rbx
+sub    $0x58,%rsp
+mov    %edi,-0x54(%rbp)
+mov    %fs:0x28,%rax
+00 00 
+mov    %rax,-0x18(%rbp)
+xor    %eax,%eax
+pxor   %xmm0,%xmm0
+cvtsi2sdl -0x54(%rbp),%xmm0
+movsd  0x56d6(%rip),%xmm1
+
+<repl>:
+push   %rbp
+mov    %rsp,%rbp
+push   %rbx
+sub    $0x28,%rsp
+mov    %rdi,-0x28(%rbp)
+mov    %rsi,-0x30(%rbp)
+movl   $0x0,-0x14(%rbp)
+mov    -0x14(%rbp),%eax
+movslq %eax,%rbx
+mov    -0x30(%rbp),%rax
+mov    %rax,%rdi
+callq  402420 
+
+<isnumb>:
+push   %rbp
+mov    %rsp,%rbp
+sub    $0x10,%rsp
+mov    %rdi,-0x8(%rbp)
+mov    -0x8(%rbp),%rax
+mov    %rax,%rdi
+callq  402350
+
+<_draw>:
+push   %rbp
+mov    %rsp,%rbp
+sub    $0x70,%rsp
+movsd  %xmm0,-0x48(%rbp)
+movsd  %xmm1,-0x50(%rbp)
+movsd  %xmm2,-0x58(%rbp)
+movsd  %xmm3,-0x60(%rbp)
+movsd  %xmm4,-0x68(%rbp)
+mov    %fs:0x28,%rax
+00 00 
+mov    %rax,-0x8(%rbp)
+xor    %eax,%eax
+movsd  -0x48(%rbp),%xmm1
+movsd  -0x58(%rbp),%xmm0
+subsd  %xmm1,%xmm0
+movapd %xmm0,%xmm1
+movsd  -0x48(%rbp),%xmm2
+movsd  -0x58(%rbp),%xmm0
+subsd  %xmm2,%xmm0
+mulsd  %xmm0,%xmm1
+movsd  -0x50(%rbp),%xmm2
+movsd  -0x60(%rbp),%xmm0
+subsd  %xmm2,%xmm0
+movapd %xmm0,%xmm2
+movsd  -0x50(%rbp),%xmm3
+movsd  -0x60(%rbp),%xmm0
+subsd  %xmm3,%xmm0
+mulsd  %xmm2,%xmm0
+addsd  %xmm1,%xmm0
+callq  402450 <sqrt@plt>
+movq   %xmm0,%rax
+mov    %rax,-0x38(%rbp)
+movsd  -0x48(%rbp),%xmm1
+movsd  -0x58(%rbp),%xmm0
+subsd  %xmm1,%xmm0
+divsd  -0x38(%rbp),%xmm0
+movsd  0x2079c5(%rip),%xmm1 
+00 
+mulsd  %xmm1,%xmm0
+mulsd  -0x68(%rbp),%xmm0
+movsd  %xmm0,-0x30(%rbp)
+movsd  -0x50(%rbp),%xmm1
+movsd  -0x60(%rbp),%xmm0
+subsd  %xmm1,%xmm0
+divsd  -0x38(%rbp),%xmm0
+movsd  0x20799c(%rip),%xmm1 
+00 
+mulsd  %xmm1,%xmm0
+mulsd  -0x68(%rbp),%xmm0
+movsd  %xmm0,-0x28(%rbp)
+movsd  -0x48(%rbp),%xmm0
+ucomisd -0x58(%rbp),%xmm0
+seta   %al
+xor    $0x1,%eax
+test   %al,%al
+jne    408945 <_draw+0x107>
+pxor   %xmm0,%xmm0
+ucomisd -0x30(%rbp),%xmm0
+seta   %al
+xor    $0x1,%eax
+test   %al,%al
+je     4089ca <_draw+0x18c>
+movsd  -0x48(%rbp),%xmm1
+movsd  -0x58(%rbp),%xmm0
+ucomisd %xmm1,%xmm0
+seta   %al
+xor    $0x1,%eax
+test   %al,%al
+jne    408974 <_draw+0x136>
+movsd  -0x30(%rbp),%xmm0
+pxor   %xmm1,%xmm1
+ucomisd %xmm1,%xmm0
+seta   %al
+xor    $0x1,%eax
+test   %al,%al
+je     4089ca <_draw+0x18c>
+movsd  -0x50(%rbp),%xmm0
+ucomisd -0x60(%rbp),%xmm0
+seta   %al
+xor    $0x1,%eax
+test   %al,%al
+jne    40899b <_draw+0x15d>
+pxor   %xmm0,%xmm0
+ucomisd -0x28(%rbp),%xmm0
+seta   %al
+xor    $0x1,%eax
+test   %al,%al
+je     4089ca <_draw+0x18c>
+movsd  -0x50(%rbp),%xmm1
+movsd  -0x60(%rbp),%xmm0
+ucomisd %xmm1,%xmm0
+seta   %al
+xor    $0x1,%eax
+test   %al,%al
+jne    408a15 <_draw+0x1d7>
+movsd  -0x28(%rbp),%xmm0
+pxor   %xmm1,%xmm1
+ucomisd %xmm1,%xmm0
+seta   %al
+xor    $0x1,%eax
+test   %al,%al
+jne    408a15 <_draw+0x1d7>
+lea    -0x50(%rbp),%rdx
+lea    -0x48(%rbp),%rcx
+lea    -0x20(%rbp),%rax
+mov    %rcx,%rsi
+mov    %rax,%rdi
+callq  4087f6 <_pairIdd>
+lea    -0x20(%rbp),%rax
+mov    %rax,%rsi
+mov    $0x610390,%edi
+callq  408d8a <_vector_pairIdd_push_back>
+movsd  -0x48(%rbp),%xmm0
+addsd  -0x30(%rbp),%xmm0
+movsd  %xmm0,-0x48(%rbp)
+movsd  -0x50(%rbp),%xmm0
+addsd  -0x28(%rbp),%xmm0
+movsd  %xmm0,-0x50(%rbp)
+jmpq   40891a <_draw+0xdc>
+nop
+mov    -0x8(%rbp),%rax
+xor    %fs:0x28,%rax
+00 00 
+je     408a2a <_draw+0x1ec>
+callq  402530 <__stack_chk_fail@plt>
+leaveq 
+retq   
+
+<main>:
+push   %rbp
+mov    %rsp,%rbp
+push   %rbx
+sub    $0x100348,%rsp
+mov    %fs:0x28,%rax
+00 00 
+mov    %rax,-0x18(%rbp)
+xor    %eax,%eax
+lea    -0x100320(%rbp),%rax
+mov    $0x406d0e,%esi
+mov    %rax,%rdi
+callq  4090e2 <_thread_create@plt>
+lea    -0x100320(%rbp),%rax
+mov    %rax,%rdi
+callq  402690 <_thread_detach@plt>
+lea    -0x1002c0(%rbp),%rax
+mov    %rax,%rdi
+callq  4091ca 
+
+<_sub_swapXY>:
+push   %rbp
+mov    %rsp,%rbp
+mov    $0xffff,%esi
+mov    $0x1,%edi
+callq  4084bf <_Z41__static_initialization_and_destruction_0ii>
+pop    %rbp
+retq 
+
+<__libc_csu_init>:
+push   %r15
+push   %r14
+mov    %edi,%r15d
+push   %r13
+push   %r12
+lea    0x203a96(%rip),%r12 
+push   %rbp
+lea    0x203a9e(%rip),%rbp   
+push   %rbx
+mov    %rsi,%r14
+mov    %rdx,%r13
+sub    %r12,%rbp
+sub    $0x8,%rsp
+sar    $0x3,%rbp
+callq  402260 <_init>
+test   %rbp,%rbp
+je     40c376 <__libc_csu_init+0x56>
+xor    %ebx,%ebx
+nopl   0x0(%rax,%rax,1)
+00 
+mov    %r13,%rdx
+mov    %r14,%rsi
+mov    %r15d,%edi
+callq  *(%r12,%rbx,8)
+add    $0x1,%rbx
+cmp    %rbp,%rbx
+jne    40c360 <__libc_csu_init+0x40>
+add    $0x8,%rsp
+pop    %rbx
+pop    %rbp
+pop    %r12
+pop    %r13
+pop    %r14
+pop    %r15
+retq   
+nop
+nopw   %cs:0x0(%rax,%rax,1)
+00 00 00 
+
+<__libc_csu_fini>:
+repz retq 
+
+<_fini>:
+sub    $0x8,%rsp
+add    $0x8,%rsp
+retq   
